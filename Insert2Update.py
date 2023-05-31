@@ -1,3 +1,10 @@
+#Script to transform sql-update-staments in a text to insert-statements
+#the update-staments can only consist of two columns
+#INSERT INTO TABLENAME (COLUMN1, COLUMN2), VALUES(COLUMNVALUE1, COLUMNVALUE2)
+#the statements will be transformed to
+#UPDATE TABLENAME SET COLUMN2 = COLUMNVALUE2 WHERE COLUMN1 = COLUMNVALUE1
+
+
 import sys
 import os.path
 
@@ -37,4 +44,5 @@ else:
         insertsfile.close()
     else:
         print('file ' + insertsfilepath + ' does not exist')
+
 
