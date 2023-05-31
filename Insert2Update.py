@@ -20,8 +20,8 @@ def insertlineparts2updateline(insertlineparts):
 
 
 
-#insertsfilepath =  sys.argv[1]
-insertsfile = open('DATA\Inserts.txt')  #open(insertsfilepath)
+insertsfilepath =  sys.argv[1]
+insertsfile = open(insertsfilepath)
 
 
 
@@ -30,5 +30,4 @@ for insertline in insertsfile:
     insertlineparts = splitline(insertline);
     updateline = insertlineparts2updateline(insertlineparts)
     print(updateline)
-
 
