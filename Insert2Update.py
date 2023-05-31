@@ -18,16 +18,14 @@ def insertlineparts2updateline(insertlineparts):
     return 'UPDATE ' + tablename + ' SET ' + setcolumn + ' = ' + setcolumnvalue + ' WHERE ' + wherecolumn + ' = ' + wherecolumnvalue + ';'
     
 
+if len(sys.argv) < 2:
+    print('Usage: Insert2Update <path to file with sql-insert statements>')
+else:
+    insertsfilepath =  sys.argv[1]
+    insertsfile = open(insertsfilepath)
 
-
-insertsfilepath =  sys.argv[1]
-insertsfile = open(insertsfilepath)
-
-
-
-for insertline in insertsfile:
-    insertline = insertline.strip('\n')
-    insertlineparts = splitline(insertline);
-    updateline = insertlineparts2updateline(insertlineparts)
-    print(updateline)
-
+    for insertline in insertsfile:
+        insertline = insertline.strip('\n')
+        insertlineparts = splitline(insertline);
+        updateline = insertlineparts2updateline(insertlineparts)
+        print(updateline)
