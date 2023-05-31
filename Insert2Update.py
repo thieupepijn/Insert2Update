@@ -1,4 +1,5 @@
 import sys
+import os.path
 
 
 def splitline(line):
@@ -21,11 +22,19 @@ def insertlineparts2updateline(insertlineparts):
 if len(sys.argv) < 2:
     print('Usage: Insert2Update <path to file with sql-insert statements>')
 else:
-    insertsfilepath =  sys.argv[1]
-    insertsfile = open(insertsfilepath)
+    insertsfilepath = sys.argv[1]
 
-    for insertline in insertsfile:
-        insertline = insertline.strip('\n')
-        insertlineparts = splitline(insertline);
-        updateline = insertlineparts2updateline(insertlineparts)
-        print(updateline)
+    if os.path.isfile(insertsfilepath):
+        insertsfile = open(insertsfilepath)
+        try:
+            for insertline in insertsfile:
+                insertline = insertline.strip('\n')
+                insertlineparts = splitline(insertline);
+                updateline = insertlineparts2updateline(insertlineparts)
+                print(updateline)
+        except:
+            print('cannot read file ' + insertsfilepath)
+        insertsfile.close()
+    else:
+        print('file ' + insertsfilepath + ' does not exist')
+
